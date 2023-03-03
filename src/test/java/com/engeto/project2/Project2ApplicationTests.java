@@ -1,4 +1,4 @@
-package com.engeto.Project2;
+package com.engeto.project2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

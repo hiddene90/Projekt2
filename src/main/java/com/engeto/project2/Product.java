@@ -1,4 +1,4 @@
-package com.engeto.Project2;
+package com.engeto.project2;
 
 import java.math.BigDecimal;
 
@@ -10,16 +10,9 @@ public class Product {
     private Boolean isForSale;
     private BigDecimal price;
 
-    public Product() {}
-
-    public Product(Integer partNo, String name, String description, Boolean isForSale, BigDecimal price) {
-        this.partNo = partNo;
-        this.name = name;
-        this.description = description;
-        this.isForSale = isForSale;
-        this.price = price;
-
+    public Product() {
     }
+
 
     public Product(Long id, Integer partNo, String name, String description, Boolean isForSale, BigDecimal price) {
         this.id = id;
@@ -29,6 +22,7 @@ public class Product {
         this.isForSale = isForSale;
         this.price = price;
     }
+
     ///region
     public Long getId() {
         return id;

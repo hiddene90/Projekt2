@@ -1,4 +1,4 @@
-package com.engeto.Project2;
+package com.engeto.project2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

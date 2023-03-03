@@ -1,4 +1,4 @@
-package com.engeto.Project2;
+package com.engeto.project2;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -8,16 +8,16 @@ import java.util.Collection;
 
 @CrossOrigin
 @RestController
-public class Project2controller {
+public class ProductController {
 
     ProductService productService;
 
-    public Project2controller() throws SQLException {
+    public ProductController() throws SQLException {
         productService = new ProductService();
     }
 
     @GetMapping("/product")
-    public Collection < Product > getAllProducts() throws SQLException {
+    public Collection <Product> getAllProducts() throws SQLException {
 
         return productService.getAllProducts();
     }
@@ -36,14 +36,14 @@ public class Project2controller {
     }
 
     @PutMapping("/product/{id}")
-    public void putProduct(@RequestParam(value = "price", required = true) BigDecimal price, @PathVariable("id") Long id) throws SQLException {
-        productService.updatePriceById(id, price);
+    public String putProduct(@RequestParam(value = "price", required = true) BigDecimal price, @PathVariable("id") Long id) throws SQLException {
+     return productService.updatePriceById(id, price);
     }
 
     @DeleteMapping("/product")
-    public void deleteOutOfSaleProducts() throws SQLException {
+    public String deleteOutOfSaleProducts() throws SQLException {
 
-        productService.deleteOutOfSaleProducts();
+      return productService.deleteOutOfSaleProducts();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.engeto.Project2;
+package com.engeto.project2;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -16,7 +16,7 @@ public class ProductService {
                 "Fotbalek123*");
     }
 
-    public List < Product > getAllProducts() throws SQLException {
+    public List <Product> getAllProducts() throws SQLException {
         Statement statement = connection.createStatement();
 
         ResultSet resultSet = statement.executeQuery("SELECT * FROM product");
@@ -61,15 +61,25 @@ public class ProductService {
         return generatedKeys.getLong(1);
     }
 
-    public void updatePriceById(Long productId, BigDecimal newPrice) throws SQLException {
+    public String  updatePriceById(Long productId, BigDecimal newPrice) throws SQLException {
         Statement statement = connection.createStatement();
 
-        statement.executeUpdate("UPDATE product SET price = " + newPrice + " WHERE id = " + productId);
+       int result = statement.executeUpdate("UPDATE product SET price = " + newPrice + " WHERE id = " + productId);
+
+       if (result !=1){
+           return "Update failed";
+       }
+       return "Update successful";
     }
 
-    public void deleteOutOfSaleProducts() throws SQLException {
+    public String deleteOutOfSaleProducts() throws SQLException {
         Statement statement = connection.createStatement();
 
-        statement.executeUpdate("DELETE FROM product WHERE isForSale = 0");
+       int result = statement.executeUpdate("DELETE FROM product WHERE isForSale = 0");
+
+       if (result ==0){
+           return "0 products deleted";
+       }
+       return "Successfully deleted products: " + result;
     }
 }
